@@ -1423,6 +1423,8 @@ class YoutubeDL:
             trim_file_name = self.params.get('trim_file_name', False)
             if trim_file_name:
                 no_ext, *ext = filename.rsplit('.', 2)
+                if len(ext) == 2 and len(ext[0]) >= 4:
+                    no_ext, *ext = filename.rsplit(".", 1)
                 filename = join_nonempty(no_ext[:trim_file_name], *ext, delim='.')
 
             return filename
